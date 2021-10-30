@@ -41,9 +41,8 @@ const controlFilterRegion = function (selectedRegion) {
   filterView.renderSpinner()
   const filteredRegions = model.filterRegion(region)
   model.state.regionFilteredResults = filteredRegions
-  if (searchView.getSearchValue().length >= 1) return controlSearchResults()
   filterView.renderMarkup(filteredRegions)
-  return true
+  if (searchView.getSearchValue().length >= 1) controlSearchResults()
 }
 
 const controlSingleCountryInformation = async function (data, historyStates) {
@@ -89,7 +88,17 @@ const toggleTheme = function () {
   }
 }
 
+const setSavedTheme = function () {
+  if (model.state.savedTheme === 'dark') {
+    themeView.addDarkmodeTheme()
+  }
+  if (model.state.savedTheme === 'light') {
+    themeView.addLightmodeTheme()
+  }
+}
+
 const init = function () {
+  setSavedTheme()
   themeView.addHandlerClick(toggleTheme)
   countriesView.addHandlerLoad(controlAllCountriesResults, controlSingleCountryInformation)
   searchView.addHandlerSearch(controlSearchResults)

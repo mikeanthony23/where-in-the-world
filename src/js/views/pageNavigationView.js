@@ -14,7 +14,7 @@ class PageNavigationView {
   }
 
   addHandlerPopstate(singleCountryHandler, allCountriesHandler) {
-    window.addEventListener('popstate', function (e) {
+    window.addEventListener('popstate', e => {
       if (e.state === null) {
         const country = getCountryOnPathname()
         hideSearchBoxAndDropdown()
@@ -31,7 +31,7 @@ class PageNavigationView {
   }
 
   addHandlerClickInTitle(handler) {
-    this.#navEl.addEventListener('click', function (e) {
+    this.#navEl.addEventListener('click', e => {
       e.preventDefault()
       const link = e.target.closest('.nav__title-link')
       if (!link) return
@@ -42,7 +42,7 @@ class PageNavigationView {
   }
 
   #addhandlerBackBtnClick() {
-    this.parentEl.addEventListener('click', function (e) {
+    this.parentEl.addEventListener('click', e => {
       const homeBtn = e.target.closest('.main__back-btn')
       if (!homeBtn) return
       window.history.back()

@@ -11,7 +11,7 @@ class CountryDetailsPageView extends View {
   #borderList
 
   addHandlerMoreInfoClick(handler) {
-    this.parentEl.addEventListener('click', function (e) {
+    this.parentEl.addEventListener('click', e => {
       e.preventDefault()
       const link = e.target.closest('.card__more-details')
       if (!link) return
@@ -23,7 +23,7 @@ class CountryDetailsPageView extends View {
   }
 
   addHandlerClickInBorderCountries(handler) {
-    this.parentEl.addEventListener('click', function (e) {
+    this.parentEl.addEventListener('click', e => {
       e.preventDefault()
       const borderCountryLink = e.target.closest('.card__border-country-link')
       if (!borderCountryLink) return
@@ -64,7 +64,7 @@ class CountryDetailsPageView extends View {
               }</span></li>
 
               <li class="card__item-detail-page">Population: <span class="card__value">${formatNumbers(
-                data.population,
+                data.population
               )}</span> </li>
   
               <li class="card__item-detail-page">Region: <span class="card__value">${
@@ -119,7 +119,7 @@ class CountryDetailsPageView extends View {
                       return `
                 <li class="card__border-country">
                   <a class="card__border-country-link" href="/more-information/${formatData(
-                    borders.countryName,
+                    borders.countryName
                   )}" data-details="${formatData(borders.countryName)}">${borders.countryName}
                   </a>
                 </li>`

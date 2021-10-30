@@ -17,7 +17,7 @@ class SearchView extends View {
   addHandlerSearch(handler) {
     const debounce = this.#debounce(handler, SEARCH_DELAY_MS)
     if (!this.#inputWrapper) return
-    this.#inputWrapper.addEventListener('input', function (e) {
+    this.#inputWrapper.addEventListener('input', e => {
       const target = e.target.closest('.input__search')
       if (!target) return
       debounce()

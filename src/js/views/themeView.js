@@ -1,12 +1,10 @@
 class ThemeView {
-  #themeSwitchBtn = document.querySelector('.nav__theme-switch')
   #bodyEl = document.querySelector('body')
 
   addHandlerClick(handler) {
-    const switchBtn = this.#themeSwitchBtn
-    if (!switchBtn) return
-    switchBtn.addEventListener('click', function () {
-      if (this !== switchBtn) return
+    this.#bodyEl.addEventListener('click', e => {
+      const themeSwitchBtn = e.target.closest('.nav__theme-switch')
+      if (!themeSwitchBtn) return
       handler()
     })
   }
@@ -19,17 +17,17 @@ class ThemeView {
     this.#bodyEl.classList.toggle('darkmode')
   }
 
-  #toggleText(text = 'Dark Mode') {
-    this.#themeSwitchBtn.textContent = text
+  toggleText(text = 'Dark Mode') {
+    this.#bodyEl.querySelector('.nav__theme-switch').textContent = text
   }
 
   addDarkmodeTheme() {
     this.#bodyEl.classList.add('darkmode')
-    this.#toggleText('Light Mode')
+    this.toggleText('Light Mode')
   }
   addLightmodeTheme() {
     this.#bodyEl.classList.remove('darkmode')
-    this.#toggleText()
+    this.toggleText()
   }
 }
 

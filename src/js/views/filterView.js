@@ -12,7 +12,7 @@ class FilterView extends View {
     this.#openCloseDropDownEnter()
   }
 
-  #updateRegionElement(data) {
+  updateRegionElement(data) {
     this.#currentRegionEl.textContent = data
     this.#currentRegionEl.dataset.region = data
   }
@@ -22,7 +22,7 @@ class FilterView extends View {
   }
 
   addHandlerKeyup(handler) {
-    const regionElement = data => this.#updateRegionElement(data)
+    const regionElement = data => this.updateRegionElement(data)
     this.#dropDownList.addEventListener('keyup', function (e) {
       if (e.key !== 'Enter') return
       if (e.key === 'Enter') {
@@ -38,7 +38,7 @@ class FilterView extends View {
   }
 
   addHandlerClick(handler) {
-    const regionElement = data => this.#updateRegionElement(data)
+    const regionElement = data => this.updateRegionElement(data)
     this.#targetParentEl.addEventListener('click', function (e) {
       const regionItems = e.target.closest('.country-drop-down__item')
       if (!regionItems) return
