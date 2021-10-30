@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/src/images/favicon-32x32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+  <title class="title">Where in the World</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <h1 class="nav__title">
+            <a class="nav__title-link" href="/">Where in the world?</a>
+          </h1>
+        </li>
+        <li class="nav__item">
+          <button class="nav__theme-switch">Light Mode</button>
+        </li>
+      </ul>
+    </nav>
+    <!-- <script src="./src/js/savedTheme.js"></script> -->
+  </header>
+
+  <section class="search-field-wrapper">
+
+    <div role="form" class="input">
+      <input class="input__search" type="search" name="q" placeholder="Search for a country...">
+    </div>
+
+    <div role="region" class="country-drop-down">
+      <h2 class="country-drop-down__filter">Filter by region</h2>
+      <div role="button" aria-pressed="false" tabindex="0" class="country-drop-down__current-region" data-region="all">
+        All
+      </div>
+
+      <ul class="country-drop-down__list hidden">
+        <li class="country-drop-down__item" tabindex="0" data-region="All">all</li>
+        <li class="country-drop-down__item" tabindex="0" data-region="Africa">africa</li>
+        <li class="country-drop-down__item" tabindex="0" data-region="Americas">america</li>
+        <li class="country-drop-down__item" tabindex="0" data-region="Asia">asia</li>
+        <li class="country-drop-down__item" tabindex="0" data-region="Europe">europe</li>
+        <li class="country-drop-down__item" tabindex="0" data-region="Oceania">oceania</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <main class="main">
+    <div class="spinner-container">
+      <div class="loader"></div>
+    </div>
+  </main>
+
+
+</body>
+
+</html>
