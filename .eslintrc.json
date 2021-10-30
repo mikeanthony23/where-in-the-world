@@ -1,0 +1,22 @@
+{
+  "ignorePatterns": ["dist", "node_modules"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "parser": "@babel/eslint-parser",
+  "rules": {
+    "prettier/prettier": "off",
+    "no-console": "off",
+    "template-curly-spacing": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "class-methods-use-this": "off",
+    "func-names": "off",
+    "no-param-reassign": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "lines-between-class-members": "off",
+    "one-var": "off"
+  }
+}
