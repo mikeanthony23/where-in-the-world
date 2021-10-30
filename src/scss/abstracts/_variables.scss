@@ -1,0 +1,26 @@
+//COLORS
+
+$darkBlue: hsl(209, 23%, 22%); //Dark Blue (Dark Mode Elements):
+$veryDarkBlue: hsl(207, 26%, 17%); //Very Dark Blue (Dark Mode Background):
+
+//NEUTRAL
+
+$white: hsl(0, 0%, 100%); //White (Dark Mode Text & Light Mode Elements):
+
+//LIGHT MODE COLORS
+
+$lightModeTextColor: hsl(200, 15%, 8%); //Very Dark Blue (Light Mode Text):
+$lightModeInputTextColor: hsl(0, 0%, 52%); //Dark Gray (Light Mode Input):
+$lightModeBgColor: hsl(0, 0%, 98%); //Very Light Gray (Light Mode Background):
+
+//FONT SIZE
+
+$HFontSize: 1.4rem; //Homepage Items:
+
+$DFontSize: 1.6rem; //Detail Page:
+
+//FONT FAMILY
+$priFontFam: 'Nunito Sans', sans-serif;
+
+//WIDTH
+$maxWidth: 1440px;

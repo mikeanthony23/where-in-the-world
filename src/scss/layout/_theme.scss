@@ -1,0 +1,86 @@
+@use '../abstracts/abstractsIndex' as *;
+
+.darkmode {
+  color: $white;
+  background-color: $veryDarkBlue;
+
+  .nav {
+    @include darkMode;
+    &__title a {
+      color: $white;
+    }
+
+    &__theme-switch {
+      @include darkMode;
+      color: $white;
+    }
+
+    &__theme-switch::before {
+      content: url('/src/images/toggle-lightmode-icon.svg');
+    }
+  }
+
+  .input {
+    @include darkMode;
+    &::after {
+      content: url('/src/images/search-icon-dark-mode.svg');
+    }
+
+    &__btn {
+      @include darkMode;
+    }
+    &__search {
+      @include darkMode;
+      color: $white;
+    }
+
+    &__search::placeholder {
+      color: $white;
+    }
+  }
+
+  .country-drop-down {
+    &__current-region {
+      @include darkMode;
+      color: $white;
+    }
+    &__list {
+      @include darkMode;
+    }
+    &__current-region::after {
+      content: url('/src/images/drop-down-arrow-white.svg');
+    }
+  }
+
+  .main {
+    &__back-btn {
+      @include darkMode;
+      color: $white;
+      &::before {
+        content: url('/src/images/arrow-left-dark-mode.svg');
+      }
+    }
+  }
+
+  .card {
+    @include darkMode;
+
+    &__more-details {
+      color: $white;
+    }
+
+    &__img-container {
+      box-shadow: none;
+    }
+
+    &__img-detail-page {
+      box-shadow: none;
+    }
+    &__border-country {
+      @include darkMode;
+    }
+    &__border-country-link {
+      color: $white;
+    }
+  }
+}

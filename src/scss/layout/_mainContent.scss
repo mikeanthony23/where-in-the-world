@@ -1,0 +1,366 @@
+@use '../abstracts/abstractsIndex' as *;
+
+.main {
+  padding: 2rem 3.5rem;
+  position: relative;
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  $paddingBtm: 8rem;
+
+  @include mediaMin(700px) {
+    padding: 2rem 4.3rem $paddingBtm 4.3rem;
+  }
+
+  @include mediaMin(1440px) {
+    padding: 0 8.3rem $paddingBtm 8.3rem;
+  }
+
+  &__back-btn {
+    $paddingTB: 0.7rem;
+    padding: $paddingTB 1rem $paddingTB 3rem;
+    border: none;
+    margin: 2rem 0;
+    border-radius: 0.25rem;
+    background: $white;
+    width: max-content;
+    text-align: center;
+    @include boxShadow;
+    font-weight: 300;
+    cursor: pointer;
+    position: relative;
+    color: $darkBlue;
+    font-size: 1.2rem;
+
+    @include mediaMin(550px) {
+      margin: 3rem 0;
+      font-size: 1.5rem;
+      padding: $paddingTB 2rem $paddingTB 4rem;
+    }
+
+    @include mediaMin(800px) {
+      margin: 5rem 0;
+    }
+
+    @include mediaMin(1300px) {
+      margin-top: 7rem;
+      margin-bottom: 4rem;
+      padding: 1rem 3rem 1rem 4.5rem;
+      font-size: 1.5rem;
+    }
+
+    &::before {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      content: url('/src/images/arrow-left-light-mode.svg');
+      transform: scale(0.5);
+      top: 0.2rem;
+      left: 0.6rem;
+      bottom: 0;
+
+      @include mediaMin(550px) {
+        transform: scale(0.75);
+        @-moz-document url-prefix('') {
+          top: 0.2rem;
+        }
+        left: 1.2rem;
+        top: 0.5rem;
+        bottom: 0.1rem;
+      }
+      @include mediaMin(1300px) {
+        left: 2rem;
+      }
+    }
+  }
+
+  &-detail-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 0 2rem;
+  }
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include mediaMin(600px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: 5rem;
+    }
+
+    @include mediaMin(760px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+    }
+
+    @include mediaMin(1000px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+
+    @include mediaMin(1100px) {
+      gap: 7rem;
+    }
+  }
+
+  &__list-item {
+    display: flex;
+    margin-bottom: 5rem;
+
+    @include mediaMin(600px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__error-msg {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.8rem;
+    font-weight: 300;
+    @include mediaMin(600px) {
+      grid-column: 1/5;
+    }
+  }
+  &__error-msg-strong {
+    font-weight: 300;
+    position: relative;
+    &::after {
+      position: absolute;
+      right: -4rem;
+      transform: scale(0.9);
+      content: url('/src/images/error_icon.svg');
+    }
+  }
+  &__error-msg-more-info {
+    margin-top: 7rem;
+  }
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: $HFontSize;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  @include boxShadow;
+  transition: transform 180ms ease-in-out;
+  @include mediaMin(600px) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  &-detail-page {
+    align-items: flex-start;
+    background: unset !important;
+    box-shadow: none;
+    border-radius: unset;
+    font-size: $DFontSize;
+    &:hover {
+      transform: unset;
+    }
+    @include mediaMin(600px) {
+      & > * {
+        flex: 1;
+      }
+    }
+
+    @include mediaMin(1300px) {
+      flex-direction: row;
+    }
+  }
+
+  &__img-container {
+    width: 100%;
+    height: 17rem;
+    @include boxShadow;
+
+    @include mediaMin(430px) {
+      height: 23rem;
+    }
+
+    @include mediaMin(600px) {
+      height: 17rem;
+    }
+
+    @include mediaMin(910px) {
+      height: 12rem;
+    }
+
+    @include mediaMin(1000px) {
+      height: 15rem;
+    }
+
+    @include mediaMin(1100px) {
+      height: 17rem;
+    }
+  }
+
+  &__img-container-detail-page {
+    height: 100%;
+    @include mediaMinMax(600px, 1300px) {
+      max-width: 50rem;
+    }
+
+    @include mediaMin(1300px) {
+      align-self: center;
+      margin: 0 4rem 0 0;
+    }
+  }
+
+  &__img {
+    border-radius: 0.5rem 0.5rem 0 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__img-detail-page {
+    border-radius: unset;
+    object-fit: cover;
+  }
+
+  &__caption {
+    margin: 0 2rem 2rem 2rem;
+    align-self: flex-start;
+  }
+
+  &__caption-detail-page {
+    margin: 0;
+    @include mediaMin(1300px) {
+      margin: 0 0 0 4rem;
+      align-self: center;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+  }
+
+  &__list-detail-page {
+    padding: 3rem 0;
+    @include mediaMin(1300px) {
+      display: grid;
+      grid-template-areas:
+        'item-0 .'
+        'item-1 item-2'
+        'item-3 item-3';
+      align-items: center;
+      gap: 0 2rem;
+    }
+  }
+
+  &__item-0 {
+    grid-area: item-0;
+  }
+
+  &__item-1 {
+    grid-area: item-1;
+    margin-right: 2rem;
+  }
+
+  &__item-2 {
+    align-self: flex-start;
+    grid-area: item-2;
+  }
+
+  &__item-3 {
+    margin-top: 2rem;
+    grid-area: item-3;
+    @include mediaMin(1300px) {
+      margin-top: 5rem;
+      display: flex;
+    }
+  }
+
+  &__more-details {
+    color: $darkBlue;
+
+    &:hover {
+      text-decoration: underline;
+      color: rgb(245, 82, 82);
+    }
+  }
+
+  &__list-details {
+    font-size: $DFontSize;
+    @include mediaMin(1000px) {
+      margin-left: 2rem;
+    }
+  }
+
+  &__item {
+    font-size: $HFontSize;
+    padding: 0.2rem 0;
+    font-weight: 600;
+    &-country-name {
+      padding: 0.7rem 0 0.5rem 0;
+      text-align: left;
+      font-size: 2rem;
+    }
+    &-country-name-detail {
+      text-align: unset;
+    }
+  }
+  &__value {
+    font-weight: 400;
+    &-country-name {
+      font-weight: 800;
+    }
+  }
+
+  &__country-name-detail-page {
+    margin: 1rem 0;
+    font-size: 3rem;
+  }
+
+  &__item-detail-page {
+    font-size: $DFontSize;
+    font-weight: 600;
+    margin: 1rem 2rem 1rem 0;
+  }
+
+  &__data-result {
+    font-weight: 400;
+  }
+
+  &__border-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__border-country {
+    color: $darkBlue;
+    margin: 0.4rem 0.8rem 0.8rem 0;
+    background-color: $white;
+    @include boxShadow;
+    border-radius: 0.3rem;
+    padding: 0.2rem 2rem;
+  }
+
+  &__border-country-link {
+    color: $darkBlue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__no-border-found-msg {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    @include mediaMin(1300px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.reduce-opacity {
+  opacity: 0.4;
+}

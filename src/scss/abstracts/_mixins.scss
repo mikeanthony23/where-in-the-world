@@ -1,0 +1,28 @@
+@use 'variables' as *;
+
+@mixin mediaMin($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin mediaMax($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin mediaMinMax($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin boxShadow() {
+  box-shadow: 0 0 0.5em 0.1em hsl(0, 0%, 90%);
+}
+
+@mixin darkMode() {
+  background-color: $darkBlue;
+  box-shadow: none;
+}
