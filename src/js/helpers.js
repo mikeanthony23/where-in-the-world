@@ -1,5 +1,5 @@
 export const toCapitalize = function (str) {
-  if (str === null) return false
+  if (!str) return false
   return str
     .trim()
     .split(' ')
@@ -92,9 +92,23 @@ export const getCountryOnPathnameOnNewTab = function () {
 }
 
 export const formatData = function (str) {
-  return str.replace(/' *'/g, '-')
+  return str.replaceAll(' ', '-')
 }
 
 export const formatCountryName = function (str) {
-  return str.replace(/-/g, ' ')
+  return str.replaceAll('-', ' ')
+}
+
+export const newPageTitle = function (title = 'Where in the World', country = '') {
+  const pageTitle = document.querySelector('.title')
+  pageTitle.textContent = `${title} ${formatCountryName(country)}`
+  return pageTitle
+}
+
+export const debounce = function (func, delay) {
+  let timer
+  return function (...args) {
+    clearTimeout(timer)
+    timer = setTimeout(func(...args), delay)
+  }
 }
