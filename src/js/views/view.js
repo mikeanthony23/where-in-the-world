@@ -1,4 +1,4 @@
-import { formatData, formatNumbers } from '../helper'
+import { formatData, formatNumbers } from '../helpers'
 
 export default class View {
   parentEl = document.querySelector('.main')
@@ -21,16 +21,15 @@ export default class View {
       (handler === 'controlResults' || handler === 'controlCountryDetails')
     )
       error = 'Cannot fetch the data please check your internet connection.'
-    if (handler === 'controlResults') {
+
+    if (handler === 'controlAllCountriesResults') {
       this.parentEl.innerHTML = `<li class="main__error-msg"><strong class="main__error-msg-strong" >${error}</strong></li>`
     }
-
     if (handler === 'controlSearchResults') {
       const [search, region] = error
       this.parentEl.innerHTML = `<li class="main__error-msg">No results found for "<strong>${search}</strong>" in <strong>${region}</strong> region.</li>`
     }
-
-    if (handler === 'controlCountryDetails') {
+    if (handler === 'controlSingleCountryInformation') {
       this.parentEl.innerHTML = `<li class="main__error-msg main__error-msg-more-info"><strong class="main__error-msg-strong">${error}</strong></li>`
     }
   }
@@ -52,14 +51,10 @@ export default class View {
          return `
       <li class="main__list-item">
         <figure class="card ${
-          this.parentEl.classList.contains('dark-mode')
-            ? `dark-mode-text-bgColor`
-            : ``
+          this.parentEl.classList.contains('dark-mode') ? `dark-mode-text-bgColor` : ``
         }">
           <div class="card__img-container">
-            <img class="card__img" src="${el.flag}" alt="Image of ${
-           el.countryName
-         }'s flag">
+            <img class="card__img" src="${el.flag}" alt="Image of ${el.countryName}'s flag">
           </div>
           <figcaption class="card__caption">
             <ul class="card__list">

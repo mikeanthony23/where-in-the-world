@@ -3,18 +3,19 @@ import {
   formatCountryName,
   disableInputAndDropdown,
   getCountryOnPathname,
-} from '../helper'
+} from '../helpers'
 
 class PageNavigationView {
   #navEl = document.querySelector('.nav')
   parentEl = document.querySelector('.main')
+  popstateTarget = window
 
   constructor() {
     this.#addhandlerBackBtnClick()
   }
 
   addHandlerPopstate(singleCountryHandler, allCountriesHandler) {
-    window.addEventListener('popstate', e => {
+    this.popstateTarget.addEventListener('popstate', e => {
       if (e.state === null) {
         const country = getCountryOnPathname()
         hideSearchBoxAndDropdown()
@@ -47,12 +48,6 @@ class PageNavigationView {
       if (!homeBtn) return
       window.history.back()
     })
-  }
-
-  newPageTitle(title = 'Where in the World', country = '') {
-    const pageTitle = document.querySelector('.title')
-    pageTitle.textContent = `${title} ${formatCountryName(country)}`
-    return pageTitle
   }
 }
 

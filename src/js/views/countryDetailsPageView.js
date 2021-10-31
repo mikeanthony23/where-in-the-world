@@ -4,7 +4,7 @@ import {
   clearSearhbox,
   formatData,
   formatCountryName,
-} from '../helper'
+} from '../helpers'
 import View from './view'
 
 class CountryDetailsPageView extends View {

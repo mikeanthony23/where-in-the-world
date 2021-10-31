@@ -1,5 +1,5 @@
 import View from './view'
-import { toggleHiddenClass } from '../helper'
+import { toggleHiddenClass } from '../helpers'
 
 class FilterView extends View {
   #targetParentEl = document.querySelector('.search-field-wrapper')
@@ -22,15 +22,14 @@ class FilterView extends View {
   }
 
   addHandlerKeyup(handler) {
-    const regionElement = data => this.updateRegionElement(data)
-    this.#dropDownList.addEventListener('keyup', function (e) {
+    this.#dropDownList.addEventListener('keyup', e => {
       if (e.key !== 'Enter') return
       if (e.key === 'Enter') {
         const regionItems = e.target.closest('.country-drop-down__item')
         if (!regionItems) return
         const regionData = regionItems.dataset.region
         const selectedRegion = regionData
-        regionElement(regionData)
+        this.updateRegionElement(regionData)
         toggleHiddenClass()
         handler(selectedRegion)
       }
@@ -38,27 +37,26 @@ class FilterView extends View {
   }
 
   addHandlerClick(handler) {
-    const regionElement = data => this.updateRegionElement(data)
-    this.#targetParentEl.addEventListener('click', function (e) {
+    this.#targetParentEl.addEventListener('click', e => {
       const regionItems = e.target.closest('.country-drop-down__item')
       if (!regionItems) return
       const regionData = regionItems.dataset.region
       const selectedRegion = regionData
-      regionElement(regionData)
+      this.updateRegionElement(regionData)
       toggleHiddenClass()
       handler(selectedRegion)
     })
   }
 
   #openCloseDropDownClick() {
-    this.#targetParentEl.addEventListener('click', function (e) {
+    this.#targetParentEl.addEventListener('click', e => {
       const dropdownBtn = e.target.closest('.country-drop-down__current-region')
       if (!dropdownBtn) return
       toggleHiddenClass()
     })
   }
   #openCloseDropDownEnter() {
-    this.#targetParentEl.addEventListener('keyup', function (e) {
+    this.#targetParentEl.addEventListener('keyup', e => {
       if (e.key !== 'Enter') return
       if (e.key === 'Enter') {
         const dropdownBtn = e.target.closest('.country-drop-down__current-region')
