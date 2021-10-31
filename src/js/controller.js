@@ -6,7 +6,12 @@ import countryDetailsPageView from './views/countryDetailsPageView'
 import pageNavigationView from './views/pageNavigationView'
 import * as model from './model'
 
-import { disableInputAndDropdown, formatSpecialCharCountryName } from './helper'
+import {
+  disableInputAndDropdown,
+  formatSpecialCharCountryName,
+  toCapitalize,
+  newPageTitle,
+} from './helpers'
 
 const controlAllCountriesResults = async function (isInitialPageLoad = true) {
   try {
@@ -14,7 +19,7 @@ const controlAllCountriesResults = async function (isInitialPageLoad = true) {
     await model.getJSON()
     countriesView.renderMarkup(model.state.results)
     if (!isInitialPageLoad) window.history.pushState({ country: 'none' }, '', '/')
-    pageNavigationView.newPageTitle()
+    newPageTitle()
     window.history.replaceState({ country: 'none' }, '', '/')
   } catch (err) {
     console.error(err.message)
@@ -24,16 +29,15 @@ const controlAllCountriesResults = async function (isInitialPageLoad = true) {
 }
 
 const controlSearchResults = function () {
-  const searchQuery = searchView.getSearchValue()
+  const searchQuery = toCapitalize(searchView.getSearchValue())
   const currentRegion = filterView.getSelectedRegion()
   const country = model.searchResults(searchQuery)
-  if (country.length === 0)
-    searchView.renderError('controlSearchResults', [searchQuery, currentRegion])
-  if (searchQuery.length === 0) {
+  searchView.renderMarkup(country)
+  if (!country.length) searchView.renderError('controlSearchResults', [searchQuery, currentRegion])
+  if (!searchQuery && !country.length) {
     filterView.updateRegionElement('All')
     searchView.renderMarkup(model.state.results)
   }
-  if (country.length > 0) searchView.renderMarkup(country)
 }
 
 const controlFilterRegion = function (selectedRegion) {
@@ -47,21 +51,14 @@ const controlFilterRegion = function (selectedRegion) {
 
 const controlSingleCountryInformation = async function (data, historyStates) {
   try {
-    const country = data
+    const country = formatSpecialCharCountryName(data)
     if (!historyStates) historyStates = [true, false, false]
     const [isAPopstate = true, isPageReloaded = false, isReplaceState = false] = historyStates
     if (isAPopstate === false) {
       window.history.pushState({ country }, '', `more-information/${country}`)
-      pageNavigationView.newPageTitle(
-        `Where in the World | `,
-        formatSpecialCharCountryName(country)
-      )
+      newPageTitle(`Where in the World | `, country)
     }
-    if (isPageReloaded === true)
-      pageNavigationView.newPageTitle(
-        `Where in the World | `,
-        formatSpecialCharCountryName(country)
-      )
+    if (isPageReloaded === true) newPageTitle(`Where in the World | `, country)
     if (isReplaceState === true) {
       window.history.replaceState({ country }, '', `/more-information/${country}`)
     }
@@ -89,12 +86,8 @@ const toggleTheme = function () {
 }
 
 const setSavedTheme = function () {
-  if (model.state.savedTheme === 'dark') {
-    themeView.addDarkmodeTheme()
-  }
-  if (model.state.savedTheme === 'light') {
-    themeView.addLightmodeTheme()
-  }
+  if (model.state.savedTheme === 'dark') themeView.addDarkmodeTheme()
+  if (model.state.savedTheme === 'light') themeView.addLightmodeTheme()
 }
 
 const init = function () {
