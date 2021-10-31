@@ -1,5 +1,5 @@
 import { TIMEOUT_SEC, API_URL } from './config'
-import { toCapitalize, timeout, formatSpecialCharCountryName } from './helper'
+import { timeout } from './helpers'
 
 export const state = {
   results: [],
@@ -44,7 +44,6 @@ export const filterRegion = function (region) {
 }
 
 export const searchResults = function (searchResult) {
-  searchResult = toCapitalize(searchResult)
   const countries = !state.regionFilteredResults.length
     ? state.results
     : state.regionFilteredResults
@@ -55,7 +54,6 @@ export const searchResults = function (searchResult) {
 
 export const loadCountriesDetailPage = async function (data) {
   await getJSON()
-  data = formatSpecialCharCountryName(data)
   return state.results.filter(country => country.countryName === data)
 }
 
