@@ -18,12 +18,9 @@ export default class View {
   renderError(handler, error) {
     if (
       error === 'Failed to fetch' &&
-      (handler === 'controlResults' || handler === 'controlCountryDetails')
-    )
-      error = 'Cannot fetch the data please check your internet connection.'
-
-    if (handler === 'controlAllCountriesResults') {
-      this.parentEl.innerHTML = `<li class="main__error-msg"><strong class="main__error-msg-strong" >${error}</strong></li>`
+      (handler === 'controlAllCountriesResults' || handler === 'controlSingleCountryInformation')
+    ) {
+      this.parentEl.innerHTML = `<li class="main__error-msg"><strong class="main__error-msg-strong" >'Cannot fetch the data please check your internet connection.'</strong></li>`
     }
     if (handler === 'controlSearchResults') {
       const [search, region] = error
