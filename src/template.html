@@ -7,11 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
   <title class="title">Where in the World</title>
 </head>
 
 <body>
+  <script>
+    localStorage.getItem('theme') === 'dark' && document.body.classList.add('darkmode')
+  </script>
   <header class="header">
     <nav class="nav">
       <ul class="nav__list">
@@ -25,13 +27,12 @@
         </li>
       </ul>
     </nav>
-    <!-- <script src="./src/js/savedTheme.js"></script> -->
   </header>
 
   <section class="search-field-wrapper">
 
     <div role="form" class="input">
-      <input class="input__search" type="search" name="q" placeholder="Search for a country...">
+      <input class="input__search" name="q" placeholder="Search for a country...">
     </div>
 
     <div role="region" class="country-drop-down">
