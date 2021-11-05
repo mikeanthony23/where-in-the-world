@@ -1,2 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,800;1,300&display=swap');
-// font weights 300 - 400 - 600 - 800
+@font-face {
+  font-family: 'Nunito Sans';
+  font-weight: 300;
+  src: url('@src/fonts/NunitoSans-ExtraLight.ttf') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-weight: 600;
+  src: url('@src/fonts/NunitoSans-SemiBold.ttf') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-weight: 800;
+  src: url('@src/fonts/NunitoSans-ExtraBold.ttf') format('woff2');
+}
