@@ -1,12 +1,11 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
 const paths = require('./paths')
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [`${paths.src}/index.js`, `${paths.src}/js/vendor.js`],
+  entry: [`${paths.src}/index.js`],
 
   // Where webpack outputs the assets and bundles
   output: {
@@ -59,7 +58,7 @@ module.exports = {
 
       // Fonts and SVGs: Inline files
       // this rule is for inlining assests or resource from directly from html
-      { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+      { test: /\.(woff(2)?|eot|ttf|otf|svg)$/, type: 'asset/inline' },
     ],
   },
 
