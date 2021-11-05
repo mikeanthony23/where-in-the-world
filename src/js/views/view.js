@@ -1,4 +1,4 @@
-import { formatData, formatNumbers } from '../helpers'
+import { formatData, formatNumbers, disableInputAndDropdown } from '../helpers'
 
 export default class View {
   parentEl = document.querySelector('.main')
@@ -13,21 +13,25 @@ export default class View {
     const markup = this.createMarkup()
     this.clear()
     this.parentEl.innerHTML = markup
+    disableInputAndDropdown(false)
   }
 
   renderError(handler, error) {
+    this.parentEl.innerHTML = `<li class="main__error-msg"><strong class="main__error-msg-strong">${error}</strong></li>`
     if (
       error === 'Failed to fetch' &&
       (handler === 'controlAllCountriesResults' || handler === 'controlSingleCountryInformation')
     ) {
-      this.parentEl.innerHTML = `<li class="main__error-msg"><strong class="main__error-msg-strong" >'Cannot fetch the data please check your internet connection.'</strong></li>`
+      this.parentEl.innerHTML = `<li class="main__error-msg ${
+        handler === 'controlSingleCountryInformation' ? 'main__error-msg-more-info' : ''
+      }"><strong class="main__error-msg-strong " >'Cannot fetch the data please check your internet connection.'</strong></li>`
+    }
+    if (handler === 'controlSingleCountryInformation' && error !== 'Failed to fetch') {
+      this.parentEl.innerHTML = `<li class="main__error-msg main__error-msg-more-info"><strong class="main__error-msg-strong">${error}</strong></li>`
     }
     if (handler === 'controlSearchResults') {
       const [search, region] = error
       this.parentEl.innerHTML = `<li class="main__error-msg">No results found for "<strong>${search}</strong>" in <strong>${region}</strong> region.</li>`
-    }
-    if (handler === 'controlSingleCountryInformation') {
-      this.parentEl.innerHTML = `<li class="main__error-msg main__error-msg-more-info"><strong class="main__error-msg-strong">${error}</strong></li>`
     }
   }
 
@@ -37,6 +41,7 @@ export default class View {
       <div class="loader"></div>
     </div>`
     this.clear()
+    disableInputAndDropdown()
     this.parentEl.innerHTML = spinner
   }
 

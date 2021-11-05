@@ -1,8 +1,8 @@
 import {
   hideSearchBoxAndDropdown,
   formatCountryName,
-  disableInputAndDropdown,
   getCountryOnPathname,
+  clearSearhbox,
 } from '../helpers'
 
 class PageNavigationView {
@@ -16,6 +16,7 @@ class PageNavigationView {
 
   addHandlerPopstate(singleCountryHandler, allCountriesHandler) {
     this.popstateTarget.addEventListener('popstate', e => {
+      clearSearhbox()
       if (e.state === null) {
         const country = getCountryOnPathname()
         hideSearchBoxAndDropdown()
@@ -37,8 +38,8 @@ class PageNavigationView {
       const link = e.target.closest('.nav__title-link')
       if (!link) return
       hideSearchBoxAndDropdown(false)
+      clearSearhbox()
       handler(false, [true, false, true])
-      disableInputAndDropdown(false)
     })
   }
 

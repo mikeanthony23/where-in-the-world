@@ -1,5 +1,10 @@
 class ThemeView {
   #bodyEl = document.querySelector('body')
+  #themeEl = document.querySelector('.nav__theme-switch')
+
+  constructor() {
+    this.intializeThemeText()
+  }
 
   addHandlerClick(handler) {
     this.#bodyEl.addEventListener('click', e => {
@@ -18,7 +23,13 @@ class ThemeView {
   }
 
   toggleText(text = 'Dark Mode') {
-    this.#bodyEl.querySelector('.nav__theme-switch').textContent = text
+    this.#themeEl.textContent = text
+  }
+
+  intializeThemeText() {
+    const isDarkmode = this.#bodyEl.classList.contains('darkmode')
+    if (!isDarkmode) this.toggleText()
+    else this.toggleText('Light Mode')
   }
 
   addDarkmodeTheme() {

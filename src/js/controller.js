@@ -7,7 +7,6 @@ import pageNavigationView from './views/pageNavigationView'
 import * as model from './model'
 
 import {
-  disableInputAndDropdown,
   formatSpecialCharCountryName,
   toCapitalize,
   newPageTitle,
@@ -15,16 +14,15 @@ import {
 
 const controlAllCountriesResults = async function (isInitialPageLoad = true) {
   try {
+    window.history.replaceState({ country: 'none' }, '', '/')
+    if (!isInitialPageLoad) window.history.pushState({ country: 'none' }, '', '/')
+    newPageTitle()
     countriesView.renderSpinner()
     await model.getJSON()
     countriesView.renderMarkup(model.state.results)
-    if (!isInitialPageLoad) window.history.pushState({ country: 'none' }, '', '/')
-    newPageTitle()
-    window.history.replaceState({ country: 'none' }, '', '/')
   } catch (err) {
     console.error(err.message)
     countriesView.renderError('controlAllCountriesResults', err.message)
-    disableInputAndDropdown()
   }
 }
 
@@ -85,13 +83,7 @@ const toggleTheme = function () {
   }
 }
 
-const setSavedTheme = function () {
-  if (model.state.savedTheme === 'dark') themeView.addDarkmodeTheme()
-  if (model.state.savedTheme === 'light') themeView.addLightmodeTheme()
-}
-
 const init = function () {
-  setSavedTheme()
   themeView.addHandlerClick(toggleTheme)
   countriesView.addHandlerLoad(controlAllCountriesResults, controlSingleCountryInformation)
   searchView.addHandlerSearch(controlSearchResults)
