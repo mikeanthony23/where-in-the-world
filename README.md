@@ -16,12 +16,14 @@
 
 ### Quick Start
 
- npm install
-  > install  dependencies
+npm install
 
- npm start 
-  > start a dev server
+> install dependencies
 
- npm build 
-  > production build you can also simply view it using `http-server ./dist --proxy http://[your ip]:[desired port]?`
+npm run start
 
+> start a dev server
+
+npm run build
+
+> production build you can also simply view it using `http-server ./dist --proxy http://[your ip]:[desired port]?`
