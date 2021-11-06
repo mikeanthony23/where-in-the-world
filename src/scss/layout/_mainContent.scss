@@ -54,7 +54,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      content: url('/src/images/arrow-left-light-mode.svg');
+      content: url('@images/arrow-left-light-mode.svg');
       transform: scale(0.5);
       top: 0.2rem;
       left: 0.6rem;
@@ -133,7 +133,7 @@
       position: absolute;
       right: -4rem;
       transform: scale(0.9);
-      content: url('/src/images/error_icon.svg');
+      content: url('@images/error_icon.svg');
     }
   }
   &__error-msg-more-info {

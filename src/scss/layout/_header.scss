@@ -83,7 +83,7 @@ body {
     }
 
     &::before {
-      content: url('/src/images/toggle-darkmode-icon.svg');
+      content: url('@images/toggle-darkmode-icon.svg');
       transform: scale(0.6);
       margin-top: 0.4rem;
       margin-right: 0.5rem;
@@ -149,7 +149,7 @@ body {
 
   &::after {
     position: absolute;
-    content: url('/src/images/search-icon-light-mode.svg');
+    content: url('@images/search-icon-light-mode.svg');
     left: 5.3rem;
     top: 3.5rem;
 
@@ -235,7 +235,7 @@ body {
 
     &::after {
       position: absolute;
-      content: url('/src/images/drop-down-arrow-black.svg');
+      content: url('@images/drop-down-arrow-black.svg');
       top: 0.5rem;
       bottom: 0;
       right: 1rem;

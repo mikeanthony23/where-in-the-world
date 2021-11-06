@@ -1,4 +1,4 @@
-import '@src/scss/main.scss'
+import '@scss/main.scss'
 
 import 'core-js/stable'
 import 'regenerator-runtime'
